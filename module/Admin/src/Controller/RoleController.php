@@ -33,8 +33,15 @@ class RoleController extends AbstractActionController
     {
         $roles = $this->roleService->findAll();
 
+        $role = 'Gerente';
+
+        if (!$this->access($role, 'Admin\Controller\RoleController', 'index')) {
+            return $this->redirect()->toRoute('admin/login');
+        }
+
         return new ViewModel([
-            'roles' => $roles
+            'roles' => $roles,
+            'auditoria' => ['role' => $role, 'resource' => 'Admin\Controller\RoleController', 'action' => 'index']
         ]);
     }
 
@@ -54,8 +61,11 @@ class RoleController extends AbstractActionController
             return;
         }
 
+        $role = 'Gerente';
+
         return new ViewModel([
-            'role' => $role
+            'role' => $role,
+            'auditoria' => ['role' => $role, 'resource' => 'Admin\Controller\RoleController', 'action' => 'show']
         ]);
     }
 
@@ -95,8 +105,11 @@ class RoleController extends AbstractActionController
 
         }
 
+        $role = 'Gerente';
+
         return new ViewModel([
-            'roleForm' => $formRole
+            'roleForm' => $formRole,
+            'auditoria' => ['role' => $role, 'resource' => 'Admin\Controller\RoleController', 'action' => 'create']
         ]);
     }
 
@@ -144,8 +157,11 @@ class RoleController extends AbstractActionController
 
         }
 
+        $role = 'Gerente';
+
         return new ViewModel([
-            'role' => $role
+            'role' => $role,
+            'auditoria' => ['role' => $role, 'resource' => 'Admin\Controller\RoleController', 'action' => 'destroy']
         ]);
     }
 

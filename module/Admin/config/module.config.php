@@ -29,6 +29,8 @@ use Admin\Service\PrivilegeService;
 use Admin\Service\ResourceService;
 use Admin\Service\RoleService;
 use Admin\Service\UserService;
+use Admin\ViewHelper\Access;
+use Admin\ViewHelper\Factory\AccessFactory;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
@@ -47,7 +49,7 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'auth' => [
+                    'login' => [
                         'type' => Literal::class,
                         'options' => [
                             'route' => '/auth/login',
@@ -171,4 +173,20 @@ return [
             ],
         ],
     ],
+    'view_helpers' => [
+        'factories' => [
+            Access::class => AccessFactory::class,
+        ],
+        'aliases' => [
+            'access' => Access::class
+        ]
+    ],
+    'controller_plugins' => [
+        'factories' => [
+            Controller\Plugin\AccessPlugin::class => Controller\Plugin\Factory\AccessPluginFactory::class,
+        ],
+        'aliases' => [
+            'access' => Controller\Plugin\AccessPlugin::class,
+        ],
+    ]
 ];

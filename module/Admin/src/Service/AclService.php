@@ -25,6 +25,10 @@ class AclService extends Acl
         $this->roles = $roles;
         $this->resources = $resources;
         $this->privileges = $privileges;
+
+        $this->loadRoles()
+            ->loadResources()
+            ->loadPrivileges();
     }
 
     protected function loadRoles(){
@@ -39,6 +43,7 @@ class AclService extends Acl
                 $this->allow($role->getName(), [], []);
         }
 
+        return $this;
     }
 
     /**
@@ -61,10 +66,10 @@ class AclService extends Acl
     {
         foreach($this->privileges as $privilege) {
             /* All actions from resource or just the actions that are allowed to the role */
-            if($privilege->getPermissions() === 'All') {
+            if($privilege->getPermissions() === 'all') {
                 $this->allow($privilege->getRole()->getName(), $privilege->getResource()->getName(), array());
             } else {
-                $actions = json_decode($privilege->getPermissions(), true);
+                $actions = explode(",", $privilege->getPermissions());
                 $this->allow($privilege->getRole()->getName(), $privilege->getResource()->getName(), $actions);
             }
         }
@@ -80,6 +85,7 @@ class AclService extends Acl
      */
     public function isAllowed($role = null, $resource = null, $privilege = null)
     {
+
         if (!$this->hasRole($role)) {
             return false;
         }

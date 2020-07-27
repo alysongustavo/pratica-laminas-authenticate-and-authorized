@@ -11,7 +11,10 @@ $this->headTitle('Listar Roles');
 </div>
 
 <div class="row">
-    <a class="btn btn-success" href="<?= $this->url("admin/role", ["action" => "create"]) ?>">Cadastrar</a>
+
+    <?php if($this->access($this->auditoria['role'], $this->auditoria['resource'], $this->auditoria['action'])): ?>
+       <a class="btn btn-success" href="<?= $this->url("admin/role", ["action" => "create"]) ?>">Cadastrar</a>
+    <?php endif; ?>
 </div>
 <br/>
 

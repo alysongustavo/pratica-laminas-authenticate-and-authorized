@@ -4,6 +4,12 @@
 namespace Admin\Listener;
 
 
+use Admin\Controller\AuthController;
+use Admin\Entity\User;
+use Admin\Service\AclService;
+use Doctrine\ORM\EntityManager;
+use Laminas\Authentication\AuthenticationService;
+use Laminas\Authentication\AuthenticationServiceInterface;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\ListenerAggregateInterface;
 use Laminas\EventManager\ListenerAggregateTrait;
@@ -23,7 +29,22 @@ class AuthenticationListener extends InjectTemplateListener
 
     public function checkAuthentication($event){
 
-         //   var_dump(['AuthenticationListener']);exit;
+        $controller = $event->getTarget();
+        $match       = $event->getRouteMatch();
+        $authService = $event->getApplication()->getServiceManager()->get(AuthenticationService::class);
+        $routeName   = $match->getMatchedRouteName();
+        $em          = $event->getApplication()->getServiceManager()->get(EntityManager::class);
+
+        $matchedController = $match->getParam('controller');
+
+        $matchedAction     = $match->getParam('action');
+
+        if(!$authService->hasIdentity()){
+
+        }
+
+
+
 
     }
 

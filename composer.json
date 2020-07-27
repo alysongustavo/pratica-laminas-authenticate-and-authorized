@@ -30,7 +30,9 @@
         "doctrine/migrations": "2.3.x-dev",
         "laminas/laminas-permissions-acl": "^2.7",
         "laminas/laminas-math": "^3.2",
-        "laminas/laminas-crypt": "^3.3"
+        "laminas/laminas-crypt": "^3.3",
+        "laminas/laminas-authentication": "^2.7",
+        "laminas/laminas-mvc-plugin-prg": "^1.2"
     },
     "autoload": {
         "psr-4": {
