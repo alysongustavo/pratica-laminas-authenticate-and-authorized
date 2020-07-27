@@ -1,0 +1,52 @@
+<?php
+
+$this->headTitle('Visualizar Role');
+
+?>
+
+<div class="row">
+    <h1>Deseja Realmente Excluir esse Registro?</h1>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <td><?= $this->role->getId() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td><?= $this->role->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td><?= $this->role->getDescription() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Role Parent</th>
+                <td><?= !is_null($this->role->getParent()) ? $this->role->getParent()->getName() : "" ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Desenvolvedor?</th>
+                <td><?= ($this->role->getDeveloper()) ? "Sim" : "Não" ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form name="category-form" method="post">
+                <input type="hidden" name="id" value="<?= $this->role->getId() ?>">
+                <button name="confirma" class="btn btn-danger">Confirmar</button>
+            </form>
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <a class="btn btn-success" href="<?= $this->url("admin/role", ["action" => "index"]) ?>">Cancelar</a>
+        </div>
+
+    </div>
+</div>

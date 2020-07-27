@@ -1,0 +1,48 @@
+<?php
+
+$this->headTitle('Detalhar User');
+
+?>
+
+<div class="row">
+    <h1>Detalhar User</h1>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <td><?= $this->user->getId() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td><?= $this->user->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">CPF</th>
+                <td><?= $this->user->getCpf() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td><?= $this->user->getEmail() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Role</th>
+                <td><?= $this->user->getRoleAsString() ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a class="btn btn-danger" href="<?= $this->url("admin/user", ["action" => "destroy", "id" => $this->user->getId()]) ?>">Excluir</a>
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <a class="btn btn-info" href="<?= $this->url("admin/user", ["action" => "index"]) ?>">Voltar</a>
+        </div>
+    </div>
+</div>

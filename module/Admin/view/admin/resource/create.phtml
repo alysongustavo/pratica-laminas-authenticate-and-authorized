@@ -1,0 +1,52 @@
+<?php
+
+$this->headTitle('Cadastrar Resource');
+
+$this->resourceForm->get('name')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Nome',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes([
+    'class' => 'sr-only'
+]);
+
+$this->resourceForm->get('description')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Descrição',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes([
+    'class' => 'sr-only'
+]);
+?>
+
+
+<div class="row">
+    <?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+    <?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+    <?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+</div>
+
+<div class="row">
+    <h1>Cadastrar Recurso</h1>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-offset-4 col-md-12">
+        <form method="post">
+
+            <div class="form-group">
+                <?= $this->formLabel($this->resourceForm->get('name')); ?>
+                <?= $this->formElement($this->resourceForm->get('name')); ?>
+            </div>
+
+            <div class="form-group">
+                <?= $this->formLabel($this->resourceForm->get('description')); ?>
+                <?= $this->formElement($this->resourceForm->get('description')); ?>
+            </div>
+
+            <?= $this->formElement($this->resourceForm->get('csrf')) ?>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>

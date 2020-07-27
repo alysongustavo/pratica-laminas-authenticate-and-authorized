@@ -1,0 +1,45 @@
+<?php
+
+$this->headTitle('Listar Privileges');
+
+?>
+
+<div class="row">
+    <?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+    <?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+    <?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+</div>
+
+<div class="row">
+    <a class="btn btn-success" href="<?= $this->url("admin/privilege", ["action" => "create"]) ?>">Cadastrar</a>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Role</th>
+                <th scope="col">Resource</th>
+                <th scope="col">Permissions</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->privileges as $privilege): ?>
+                <tr>
+                    <th scope="row"><?= $privilege->getId() ?></th>
+                    <td><?= $privilege->getRole()->getName() ?></td>
+                    <td><?= $privilege->getResource()->getName() ?></td>
+                    <td><?= $privilege->getPermissions() ?></td>
+                    <td><a href="<?= $this->url('admin/privilege', ['action' => 'show', 'id' => $privilege->getid()]) ?>">Visualizar</a>
+                        | <a href="<?= $this->url('admin/privilege', ['action' => 'edit', 'id' => $privilege->getid()]) ?>">Editar</a>
+                        | <a href="<?= $this->url('admin/privilege', ['action' => 'destroy', 'id' => $privilege->getid()]) ?>">Excluir</a></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

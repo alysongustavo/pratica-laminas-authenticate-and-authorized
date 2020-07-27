@@ -1,0 +1,49 @@
+<?php
+
+$this->headTitle('Detalhar Role');
+
+?>
+
+<div class="row">
+    <h1>Detalhar Role</h1>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <td><?= $this->role->getId() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td><?= $this->role->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td><?= $this->role->getDescription() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Role Parent</th>
+                <td><?= !is_null($this->role->getParent()) ? $this->role->getParent()->getName() : "" ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Desenvolvedor?</th>
+                <td><?= ($this->role->getDeveloper()) ? "Sim" : "Não" ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a class="btn btn-danger" href="<?= $this->url("admin/role", ["action" => "destroy", "id" => $this->role->getId()]) ?>">Excluir</a>
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <a class="btn btn-info" href="<?= $this->url("admin/role", ["action" => "index"]) ?>">Voltar</a>
+        </div>
+
+    </div>
+</div>

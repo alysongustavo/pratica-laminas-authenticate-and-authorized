@@ -1,0 +1,41 @@
+<?php
+
+$this->headTitle('Detalhar Resource');
+
+?>
+
+<div class="row">
+    <h1>Detalhar Resource</h1>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <td><?= $this->resource->getId() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td><?= $this->resource->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td><?= $this->resource->getDescription() ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a class="btn btn-danger" href="<?= $this->url("admin/resource", ["action" => "destroy", "id" => $this->resource->getId()]) ?>">Excluir</a>
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <a class="btn btn-info" href="<?= $this->url("admin/resource", ["action" => "index"]) ?>">Voltar</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<?php
+
+$this->headTitle('Cadastrar Role');
+
+$this->roleForm->get('name')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Nome',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes([
+    'class' => 'sr-only'
+]);
+
+$this->roleForm->get('description')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Descrição',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes([
+    'class' => 'sr-only'
+]);
+
+$this->roleForm->get('parent')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Role Pai',
+    'required' => true,
+    'autofocus' => true
+])->setLabelAttributes([
+    'class' => 'sr-only'
+]);
+
+?>
+
+
+<div class="row">
+    <?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+    <?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+    <?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+</div>
+
+<div class="row">
+    <h1>Cadastrar Role</h1>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-offset-4 col-md-12">
+        <form method="post">
+
+            <div class="form-group">
+                <?= $this->formLabel($this->roleForm->get('name')); ?>
+                <?= $this->formElement($this->roleForm->get('name')); ?>
+            </div>
+
+            <div class="form-group">
+                <?= $this->formLabel($this->roleForm->get('description')); ?>
+                <?= $this->formElement($this->roleForm->get('description')); ?>
+            </div>
+
+            <div class="form-group">
+                <?= $this->formLabel($this->roleForm->get('parent')); ?>
+                <?= $this->formElement($this->roleForm->get('parent')); ?>
+            </div>
+
+            <?= $this->formElement($this->roleForm->get('csrf')) ?>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>

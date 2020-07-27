@@ -1,0 +1,44 @@
+<?php
+
+$this->headTitle('Detalhar Privilege');
+
+?>
+
+<div class="row">
+    <h1>Detalhar Privilege</h1>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <td><?= $this->privilege->getId() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Role</th>
+                <td><?= $this->privilege->getRole()->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Resource</th>
+                <td><?= $this->privilege->getResource()->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Permissions</th>
+                <td><?= $this->privilege->getPermissions() ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a class="btn btn-danger" href="<?= $this->url("admin/privilege", ["action" => "destroy", "id" => $this->privilege->getId()]) ?>">Excluir</a>
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <a class="btn btn-info" href="<?= $this->url("admin/privilege", ["action" => "index"]) ?>">Voltar</a>
+        </div>
+    </div>
+</div>

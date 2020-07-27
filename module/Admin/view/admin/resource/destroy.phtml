@@ -1,0 +1,44 @@
+<?php
+
+$this->headTitle('Destroy Resource');
+
+?>
+
+<div class="row">
+    <h1>Deseja Realmente Excluir esse Registro?</h1>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <td><?= $this->resource->getId() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td><?= $this->resource->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td><?= $this->resource->getDescription() ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form name="category-form" method="post">
+                <input type="hidden" name="id" value="<?= $this->resource->getId() ?>">
+                <button name="confirma" class="btn btn-danger">Confirmar</button>
+            </form>
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <a class="btn btn-success" href="<?= $this->url("admin/resource", ["action" => "index"]) ?>">Cancelar</a>
+        </div>
+
+    </div>
+</div>

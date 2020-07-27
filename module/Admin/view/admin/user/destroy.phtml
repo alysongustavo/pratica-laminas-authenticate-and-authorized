@@ -1,0 +1,52 @@
+<?php
+
+$this->headTitle('Destroy User');
+
+?>
+
+<div class="row">
+    <h1>Deseja Realmente Excluir esse Registro?</h1>
+</div>
+<br/>
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">#</th>
+                <td><?= $this->user->getId() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Name</th>
+                <td><?= $this->user->getName() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">CPF</th>
+                <td><?= $this->user->getCpf() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td><?= $this->user->getEmail() ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Role</th>
+                <td><?= $this->user->getRoleAsString() ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form name="category-form" method="post">
+                <input type="hidden" name="id" value="<?= $this->user->getId() ?>">
+                <button name="confirma" class="btn btn-danger">Confirmar</button>
+            </form>
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <a class="btn btn-success" href="<?= $this->url("admin/user", ["action" => "index"]) ?>">Cancelar</a>
+        </div>
+
+    </div>
+</div>
